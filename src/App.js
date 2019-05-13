@@ -1,4 +1,5 @@
 import React from 'react';
+import Card from './components/Card';
 import './App.css';
 
 
@@ -65,46 +66,26 @@ const data = {
 
 
 
+
 class App extends React.Component {
 
-
   handleClick(event){
-    const chosenColor=event.currentTarget;
-    let colorLetters= chosenColor.innerHTML;
-    console.log(colorLetters);
+    const selectedColor=event.currentTarget;
+    console.log(selectedColor.innerHTML)
   }
-
+  
   render(){
-  return (
-    <div className="App">
-      <h1>Ejericio palettes</h1>
-      <ul className="list">
-        {data.palettes.map(item=>{
-          return (
-          <li className="item">
-          <h2> {item.name} </h2>
-         
-            {item.colors.map(color=>{
-            return(
-              <div
-              className="colors"
-              onClick={this.handleClick}
-              style={{
-                backgroundColor:`#${color}`,
-              }
-              }
-              > {color}</div>
-            )
-            
-          })}
-          </li>
-          )
-        }
-        
-        )}
-      </ul>
-    </div>
-  );
+    console.log(data.palettes);
+    return(
+      <div>
+   <Card 
+    data={data.palettes}
+    click={this.handleClick}
+    />
+      </div>
+    
+    )
+ 
 }
 }
 
